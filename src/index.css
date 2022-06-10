@@ -3,3 +3,20 @@
   margin: 0;
   box-sizing: border-box;
 }
+html,
+body{
+  width: 100vw;
+  height: 100vh;
+}
+body{
+  background: rgb(69,142,191);
+  background: linear-gradient(175deg, rgba(69,142,191,1) 0%, rgba(201,231,241,1) 100%);
+}
+.wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+}
