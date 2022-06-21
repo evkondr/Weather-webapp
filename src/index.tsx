@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App headerText="Header" />
+    <App />
   </React.StrictMode>,
 );
