@@ -12,7 +12,6 @@ class API {
         q: "Moscow",
       },
     });
-    console.log(response.data);
     return response.data;
   }
 }
