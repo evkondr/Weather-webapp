@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import style from "style.css";
 import API from "../../API/api";
 import { IWeather } from "../../interfaces";
-
-type error = {
-  message: string
-}
 
 function InfoBox() {
   const [weather, setWeather] = useState<null | IWeather>(null);
@@ -26,7 +21,7 @@ function InfoBox() {
     fetchCurrentWeather();
   }, []);
   return (
-    <div className="">
+    <div className="info-box">
       <p>test</p>
     </div>
   );

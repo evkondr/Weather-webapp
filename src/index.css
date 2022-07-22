@@ -1,3 +1,10 @@
+:root{
+  --bg-color: #343d4b;
+  --bg-color-widget: #222831;
+  --block-radius: 10px;
+  --font-color: #fff;
+  --gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
+}
 *{
   padding: 0;
   margin: 0;
@@ -9,8 +16,7 @@ body{
   height: 100vh;
 }
 body{
-  background: rgb(69,142,191);
-  background: linear-gradient(175deg, rgba(69,142,191,1) 0%, rgba(201,231,241,1) 100%);
+  background-color: var(--bg-color);
 }
 .wrap{
   display: flex;
@@ -19,4 +25,36 @@ body{
   max-width: 1280px;
   height: 100vh;
   margin: 0 auto;
+}
+.weather-widget{
+  display: flex;
+  color: var(--font-color);
+  background-color: var(--bg-color-widget);
+  border-radius: var(--block-radius);
+}
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  border-radius: var(--block-radius);
+  overflow: hidden;
+  transform: scale(103%);
+}
+.card__gradient{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: var(--gradient);
+}
+.card__content{
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1000;
 }
