@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 :root{
   --bg-color: #343d4b;
-  --bg-color-widget: #222831;
+  --color-2: #222831;
   --block-radius: 10px;
   --font-color: #fff;
   --gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
@@ -10,12 +11,16 @@
   margin: 0;
   box-sizing: border-box;
 }
+ul{
+  list-style-type: none;
+}
 html,
 body{
   width: 100vw;
   height: 100vh;
 }
 body{
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-color);
 }
 .wrap{
@@ -29,15 +34,17 @@ body{
 .weather-widget{
   display: flex;
   color: var(--font-color);
-  background-color: var(--bg-color-widget);
+  background-color: var(--color-2);
   border-radius: var(--block-radius);
 }
 .card{
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 300px;
+  background: url("https://www.marineinsight.com/wp-content/uploads/2022/04/10-Azov-Sea-facts-you-might-not-know.png") left center no-repeat;
+  background-size: cover;
+  width: 300px;
+  height: 400px;
   border-radius: var(--block-radius);
   overflow: hidden;
   transform: scale(103%);
@@ -48,6 +55,7 @@ body{
   bottom: 0;
   width: 100%;
   background-image: var(--gradient);
+  opacity: 0.8;
 }
 .card__content{
   position: relative;
@@ -57,4 +65,87 @@ body{
   justify-content: space-between;
   padding: 20px;
   z-index: 1000;
+}
+.card__up-day{
+  font-size: 25px;
+  font-weight: 700;
+}
+.card__up-location{
+  margin-top: 10px;
+}
+.icon-xs{
+  width: 10px;
+  color: #fff;
+}
+.icon-xs path{
+  color: #fff;
+}
+.card__temp{
+  display: flex;
+  flex-direction: column;
+}
+.card__temp>span:nth-child(1){
+ font-size: 70px;
+ font-weight: 700;
+}
+.card__temp>span:nth-child(2){
+  font-size: 30px;
+}
+.menu{
+  display: flex;
+  width: 400px;
+  font-weight: 600;
+  padding: 40px;
+}
+.menu-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.details__item{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.forcast-widjet{
+  display: flex;
+  box-shadow: 0 0 50px -5px rgb(0 0 0 / 25%);
+  border-radius: var(--block-radius);
+}
+.forcast-widjet__card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  flex-grow: 1;
+  border-radius: var(--block-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.forcast-widjet__card_active{
+  background-color: #fff;
+  color: var(--color-2);
+}
+.forcast-widjet__card:hover{
+  transform: scale(110%);
+  background-color: #fff;
+  color: var(--color-2);
+}
+.button{
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  background-image: var(--gradient);
+  color: #fff;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.button:hover{
+  transform: scale(95%);
 }
