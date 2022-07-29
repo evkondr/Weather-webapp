@@ -1,6 +1,11 @@
 import React from "react";
+import { IWeather } from "../interfaces";
 
-function Card() {
+type CardProps = {
+  weather: IWeather | null
+}
+function Card({ weather }: CardProps) {
+  console.log(weather);
   return (
     <div className="card">
       <div className="card__gradient" />
@@ -9,14 +14,22 @@ function Card() {
           <p className="card__up-day">Вторник</p>
           <p>15 янв 2022</p>
           <p className="card__up-location">
-            Париж, ФР
+            {weather?.location.name}
+            ,
+            {" "}
+            {weather?.location.country}
           </p>
         </div>
         <div className="card__bottom">
-          <div className="icon" />
+          <div className="icon">
+            <img src={weather?.current.condition.icon} alt="" />
+          </div>
           <div className="card__temp">
-            <span>29 C</span>
-            <span>Sunny</span>
+            <span>
+              {weather?.current.temp_c}
+              &deg;C
+            </span>
+            <span>{weather?.current.condition.text}</span>
           </div>
         </div>
       </div>
