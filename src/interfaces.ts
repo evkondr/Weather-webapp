@@ -42,3 +42,26 @@ export interface IWeather{
     current: ICurrent,
     location: ILocation
 }
+export enum Months {
+    "янв",
+    "фев",
+    "мар",
+    "апр",
+    "май",
+    "июня",
+    "июля",
+    "авг",
+    "сен",
+    "окт",
+    "ноя",
+    "дек"
+}
+export enum dayOfWeek {
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
+    "Воскресенье"
+}
