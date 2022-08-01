@@ -13,7 +13,7 @@ interface IMenuProps{
 }
 function Menu(props:IMenuProps) {
   const { precip_in, humidity, wind_kph } = props;
-  const changeLoc = useContext(locationContext);
+  const changeLocation = useContext(locationContext);
   const [activeModal, setActiveModal] = useState<string>("");
   const closeModal = () => {
     setActiveModal("");
@@ -59,7 +59,7 @@ function Menu(props:IMenuProps) {
         <div className="change">
           <Button clickHandler={() => { openModal(); }}>Change location</Button>
           <Modal classActive={activeModal}>
-            <ChangeForm closeModal={closeModal} />
+            <ChangeForm closeModal={closeModal} changeLocation={changeLocation} />
           </Modal>
         </div>
       </div>

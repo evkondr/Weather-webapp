@@ -13,7 +13,7 @@ function App() {
     const response = await appService.getWeather({ lang: "ru", q: location, day: 5 });
     setCurrentWeather(response);
   });
-  const changeLoc = useCallback((loc:string) => {
+  const changeLocation = useCallback((loc:string) => {
     setLocation(loc);
   }, []);
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="wrap">
       <div className="weather-widget">
-        <locationContext.Provider value={changeLoc}>
+        <locationContext.Provider value={changeLocation}>
           <Card weather={currentWeather} />
           <Menu
             precip_in={currentWeather?.current.precip_in}
