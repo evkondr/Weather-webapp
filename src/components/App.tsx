@@ -5,12 +5,13 @@ import useFetch from "../hooks/useFetch";
 import appService from "../API/appSetvice";
 import { IWeather } from "../interfaces";
 import locationContext from "../context/locationContext";
+import Error from "./Error";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState<null | IWeather>(null);
   const [location, setLocation] = useState<string>("Москва");
   const [error, isLoading, fetchData] = useFetch(async () => {
-    const response = await appService.getWeather({ lang: "ru", q: location, day: 5 });
+    const response = await appService.getWeather({ lang: "ru", q: location, days: 7 });
     setCurrentWeather(response);
   });
   const changeLocation = useCallback((loc:string) => {
@@ -21,16 +22,20 @@ function App() {
   }, [location]);
   return (
     <div className="wrap">
-      <div className="weather-widget">
-        <locationContext.Provider value={changeLocation}>
-          <Card weather={currentWeather} />
-          <Menu
-            precip_in={currentWeather?.current.precip_in}
-            humidity={currentWeather?.current.humidity}
-            wind_kph={currentWeather?.current.wind_kph}
-          />
-        </locationContext.Provider>
-      </div>
+      {error ? (
+        <Error message={error} />
+      ) : (
+        <div className="weather-widget">
+          <locationContext.Provider value={changeLocation}>
+            <Card weather={currentWeather} />
+            <Menu
+              precip_in={currentWeather?.current.precip_in}
+              humidity={currentWeather?.current.humidity}
+              wind_kph={currentWeather?.current.wind_kph}
+            />
+          </locationContext.Provider>
+        </div>
+      )}
     </div>
   );
 }

@@ -42,6 +42,11 @@ export interface IWeather{
     current: ICurrent,
     location: ILocation
 }
+export interface errData{
+    data:{
+      error: {code:number, message:string}
+    }
+  }
 export enum Months {
     "янв",
     "фев",

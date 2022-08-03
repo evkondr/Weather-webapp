@@ -6,7 +6,7 @@ const key = "43fc100559fd40f99c2110245220606";
 type params = {
   lang:string,
   q:string,
-  day:number
+  days:number
 }
 class appSetvice {
   static async getWeather(params:params) {

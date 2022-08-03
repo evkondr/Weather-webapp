@@ -211,3 +211,24 @@ body{
 .location__form-close::after{
   transform: rotate(-45deg);
 }
+.error{
+  background: #fff;
+  padding: 30px;
+  color: red;
+}
+.error__message{
+  animation-name: blink;
+  animation-duration: .3s;
+  animation-iteration-count: 10;
+}
+@keyframes blink{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}

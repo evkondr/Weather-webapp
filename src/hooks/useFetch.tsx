@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { IWeather } from "../interfaces";
+import axios, { AxiosError } from "axios";
+import { IWeather, errData } from "../interfaces";
 
 const useFetch = (callback:any) => {
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<null | AxiosError | Error | string>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const fetchData:any = async (params:any) => {
     try {
       setIsLoading(true);
       await callback(params);
-    } catch (e:any) {
+    } catch (err:any) {
       setIsLoading(false);
-      console.log(e);
+      if (axios.isAxiosError(err) && err.response) {
+        const { data } = err.response as errData;
+        setError(data.error.message);
+      } else {
+        setError(err.message);
+      }
     } finally {
       setIsLoading(false);
     }
