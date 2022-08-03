@@ -4,7 +4,7 @@ import Menu from "./MenuComponent";
 import useFetch from "../hooks/useFetch";
 import appService from "../API/appSetvice";
 import { IWeather } from "../interfaces";
-import locationContext from "../context/locationContext";
+import appContext from "../context/appContext";
 import Error from "./Error";
 
 function App() {
@@ -26,14 +26,14 @@ function App() {
         <Error message={error} />
       ) : (
         <div className="weather-widget">
-          <locationContext.Provider value={changeLocation}>
+          <appContext.Provider value={changeLocation}>
             <Card weather={currentWeather} />
             <Menu
               precip_in={currentWeather?.current.precip_in}
               humidity={currentWeather?.current.humidity}
               wind_kph={currentWeather?.current.wind_kph}
             />
-          </locationContext.Provider>
+          </appContext.Provider>
         </div>
       )}
     </div>

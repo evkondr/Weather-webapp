@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import ForcastWidjet from "./ForcastWidget";
 import Button from "./Button";
-import locationContext from "../context/locationContext";
+import appContext from "../context/appContext";
 import Modal from "./Modal";
 import ChangeForm from "./ChangeForm";
 
@@ -13,7 +13,7 @@ interface IMenuProps{
 }
 function Menu(props:IMenuProps) {
   const { precip_in, humidity, wind_kph } = props;
-  const changeLocation = useContext(locationContext);
+  const changeLocation = useContext(appContext);
   const [activeModal, setActiveModal] = useState<string>("");
   const closeModal = () => {
     setActiveModal("");
