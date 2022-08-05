@@ -1,18 +1,24 @@
 /* eslint-disable camelcase */
 import React, { useContext, useState } from "react";
+import { v4 } from "uuid";
 import ForcastWidjet from "./ForcastWidget";
 import Button from "./Button";
 import appContext from "../context/appContext";
 import Modal from "./Modal";
 import ChangeForm from "./ChangeForm";
+import { IForecastDay } from "../interfaces";
+import getCurrentDate from "../API/getCurrentDate";
 
 interface IMenuProps{
   precip_in: number | undefined,
   humidity: number | undefined,
   wind_kph: number | undefined,
+  forecastday: IForecastDay[] | undefined
 }
 function Menu(props:IMenuProps) {
-  const { precip_in, humidity, wind_kph } = props;
+  const {
+    precip_in, humidity, wind_kph, forecastday,
+  } = props;
   const changeLocation = useContext(appContext);
   const [activeModal, setActiveModal] = useState<string>("");
   const closeModal = () => {
@@ -21,6 +27,7 @@ function Menu(props:IMenuProps) {
   const openModal = () => {
     setActiveModal("modal_active");
   };
+  console.log(forecastday);
   return (
     <div className="menu">
       <div className="menu-container">
@@ -54,7 +61,15 @@ function Menu(props:IMenuProps) {
           </ul>
         </div>
         {/* Forcast block */}
-        <ForcastWidjet />
+        <div className="forcast-widjet">
+          {forecastday?.map((item, index) => (
+            <ForcastWidjet
+              key={v4()}
+              day={item.day}
+              dayWeek={getCurrentDate(index + 1).dayOfWeek.substring(0, 3)}
+            />
+          ))}
+        </div>
         {/* Change location block */}
         <div className="change">
           <Button clickHandler={() => { openModal(); }}>Change location</Button>

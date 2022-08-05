@@ -1,29 +1,18 @@
 import React from "react";
-import { IWeather, Months, dayOfWeek } from "../interfaces";
+import { IWeather } from "../interfaces";
+import getCurrentDate from "../API/getCurrentDate";
 
 type CardProps = {
   weather: IWeather | null
 }
 function Card({ weather }: CardProps) {
-  console.log(weather);
-  const getCurrentDay = ():{date:string, dayOfWeek:string} => {
-    const date = new Date();
-    const day:number = date.getDate();
-    const month:string = Months[date.getMonth()];
-    const year:number = date.getFullYear();
-    const dayWeek = dayOfWeek[date.getDay() - 1];
-    return {
-      date: `${day} ${month} ${year}`,
-      dayOfWeek: dayWeek,
-    };
-  };
   return (
     <div className="card">
       <div className="card__gradient" />
       <div className="card__content">
         <div className="card__up">
-          <p className="card__up-day">{getCurrentDay().dayOfWeek}</p>
-          <p>{getCurrentDay().date}</p>
+          <p className="card__up-day">{getCurrentDate().dayOfWeek}</p>
+          <p>{getCurrentDate().day}</p>
           <p className="card__up-location">
             {weather?.location.name}
             ,

@@ -38,13 +38,44 @@ interface ILocation{
     region: string,
     tz_id: string,
 }
+export interface IDay{
+    avghumidity: number,
+    avgtemp_c: number,
+    avgtemp_f: number,
+    avgvis_km: number,
+    avgvis_miles: number,
+    condition: condition
+    daily_chance_of_rain: number,
+    daily_chance_of_snow: number,
+    daily_will_it_rain: number,
+    daily_will_it_snow: number,
+    maxtemp_c: number,
+    maxtemp_f: number,
+    maxwind_kph: number,
+    maxwind_mph: number,
+    mintemp_c: number,
+    mintemp_f: number,
+    totalprecip_in: number,
+    totalprecip_mm: number,
+    uv: number
+}
+export interface IForecastDay{
+    day: IDay
+}
+export interface IForecast{
+    forecastday: IForecastDay[]
+}
 export interface IWeather{
     current: ICurrent,
-    location: ILocation
+    location: ILocation,
+    forecast: IForecast
 }
 export interface errData{
     data:{
-      error: {code:number, message:string}
+      error: {
+            code:number,
+            message:string
+        }
     }
   }
 export enum Months {

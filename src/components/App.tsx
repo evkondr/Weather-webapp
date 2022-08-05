@@ -32,6 +32,7 @@ function App() {
               precip_in={currentWeather?.current.precip_in}
               humidity={currentWeather?.current.humidity}
               wind_kph={currentWeather?.current.wind_kph}
+              forecastday={currentWeather?.forecast.forecastday}
             />
           </appContext.Provider>
         </div>

@@ -1,28 +1,19 @@
 import React from "react";
+import { IDay } from "../interfaces";
 
-function ForcastWidjet() {
+interface IForcastWidjetProps{
+  day: IDay,
+  dayWeek: string
+}
+function ForcastWidjet(props:IForcastWidjetProps) {
+  const { day, dayWeek } = props;
   return (
-    <div className="forcast-widjet">
-      <div className="forcast-widjet__card forcast-widjet__card_active">
-        <div className="icon" />
-        <div className="forcast-widjet__day">Tue</div>
-        <div className="forcast-widjet__temp">29 C</div>
+    <div className="forcast-widjet__card">
+      <div className="icon">
+        <img src={day.condition.icon} alt="" />
       </div>
-      <div className="forcast-widjet__card">
-        <div className="icon" />
-        <div className="forcast-widjet__day">Tue</div>
-        <div className="forcast-widjet__temp">29 C</div>
-      </div>
-      <div className="forcast-widjet__card">
-        <div className="icon" />
-        <div className="forcast-widjet__day">Tue</div>
-        <div className="forcast-widjet__temp">29 C</div>
-      </div>
-      <div className="forcast-widjet__card">
-        <div className="icon" />
-        <div className="forcast-widjet__day">Tue</div>
-        <div className="forcast-widjet__temp">29 C</div>
-      </div>
+      <div className="forcast-widjet__day">{dayWeek}</div>
+      <div className="forcast-widjet__temp">{day.maxtemp_c}</div>
     </div>
   );
 }
