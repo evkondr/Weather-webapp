@@ -1,8 +1,8 @@
 import axios from "axios";
 import { IWeather } from "../interfaces";
 
-const url = "http://api.weatherapi.com/v1/forecast.json";
-const key = "43fc100559fd40f99c2110245220606";
+const url = "https://api.weatherapi.com/v1/forecast.json";
+const key = process.env.REACT_APP_KEY;
 type params = {
   lang:string,
   q:string,
